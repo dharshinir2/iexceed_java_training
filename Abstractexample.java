@@ -1,7 +1,7 @@
-public class AbstractExample {  // Corrected the class name to follow conventions
+public class AbstractExample {
     public static void main(String[] args) {
         A obj = new A();
-        obj.display(10, 10);  // This should work fine now
+        obj.display(10, 30);
         obj.show();
     }
 }
