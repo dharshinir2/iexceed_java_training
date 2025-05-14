@@ -4,6 +4,7 @@ import java.io.*;
 class student implements Serializable{
 	String name;
 	int id;
+	//static variables cannot be serialized.transient variables turns null(ideal for password protection)
 	student(String name,int id)
 	{
 		this.name=name;
