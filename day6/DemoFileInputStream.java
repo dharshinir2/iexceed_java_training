@@ -1,6 +1,6 @@
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
-class DemoFos{
+class DemoFileInputStream{
 	public static void main(String[] args) throws Exception
 	{
 	
