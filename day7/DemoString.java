@@ -18,6 +18,8 @@ class DemoString{
 
 		
 		System.out.println(str.substring(0,4);
-		System.out.print(str.replace('o','q');				   
+		System.out.print(str.replace('o','q');	
+		System.out.println(str.concat("everyone"));	
+		System.out.println(str.indexOf('o')); //return the index of first o	
 	}
 }
