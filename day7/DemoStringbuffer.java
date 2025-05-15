@@ -11,6 +11,13 @@ class DemoStringbuffer{
 		}
 		System.out.println(sb);
 		System.out.println(sb.reverse());
+		sb.replace(1, 3, "good"); //replace
+        	System.out.println(sb);
+		 sb.delete(1, 3); //delete
+       		 System.out.println(sb);
+		System.out.println(sb.capacity()); 
+		System.out.println(sb.length());
+		
 		
 		
 	}
