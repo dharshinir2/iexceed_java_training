@@ -14,6 +14,12 @@ class demo{
 		{
 			System.out.println(it.next());
 		}
+		System.out.println("size of arraylist="+arr.size());
+		System.out.println("First element="+arr.get(0));
+		arr.set(0,"monkeydluffy");
+		System.out.println("Updated first element="+arr.get(0));
+		arr.remove(4);
+		System.out.println("new size of the arraylist"+arr.size());
 }
 }
 class demoArraylist{
@@ -22,3 +28,4 @@ class demoArraylist{
 		demo d=new demo();
 	}
 }
+
