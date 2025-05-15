@@ -1,21 +1,27 @@
 class booking{
-	int id;
-	boolean paymentstatus=false;
-	synchronized void printticket(int id)
+	int availabletickets=10;
+	
+	synchronized void bookticket(int tickets)
 	{
-		if(!this.paymentstatus)
+		if(this.availabletickets<tickets)
 		{
-			System.out.println("Payment Not completed");
+			System.out.println("Not enough tickets available");
+			
 			try{
 				wait();
 			}catch( InterruptedException d){}
 		}
-		System.out.print("Ticket is ready to collect");
+		if(tickets<this.availabletickets)
+		{
+		System.out.println("Ticket is ready to collect");
+			this.availabletickets-=tickets;
+			System.out.println("Remaining tickets:"+this.availabletickets);
+		}
 	}
-	synchronized void payment(int id)
+	synchronized void cancel(int tickets)
 	{
-		this.paymentstatus=true;
-		System.out.println("payment done");
+		this.availabletickets+=tickets;
+		System.out.println("cancellation done");
 		notify();
 	}
 }
@@ -25,12 +31,12 @@ class Interthreadcommunication{
 		booking c=new booking();
 		new Thread(){
 			public void run(){
-				c.printticket(12);
+				c.bookticket(12);
 			}
 		}.start();
 		new Thread(){
 				public void run(){
-					c.payment(12);
+					c.cancel(5);
 				}
 			}.start();
 	}
