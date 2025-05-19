@@ -1,0 +1,7 @@
+void main() {
+//ternaryoperation
+  int x=10;
+  int y=12;
+  var result= x>y?"true":"false";
+  print(result);
+}
