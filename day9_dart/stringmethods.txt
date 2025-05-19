@@ -1,0 +1,19 @@
+void main() {
+  String a = "welcome";
+  String b = "iexceed";
+  print("${a} to ${b}");
+  print(a.contains('e'));
+  if (b.endsWith('d')) {
+    print("its iexceed");
+  }
+  print(a.hashCode);
+  String c = "abcdef";
+  print(c.codeUnits);
+  print(c.isEmpty);
+  print(c.length);
+  print(c.replaceAll('a', 'z'));
+  String d = "a,b,c,d,e,f";
+  print(d.split(','));
+  print(c.compareTo(a));
+  String x = "hello";
+}
