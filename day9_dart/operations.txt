@@ -1,0 +1,27 @@
+void main() {
+//arithmetic 
+  var x=10;
+  var y=20;
+  print("Addition of ${x} and ${y} is ${x+y}");
+  print("Difference betweem ${x} and ${y} is ${x-y}");
+  print("Product of ${x} and ${y} is ${x*y}");
+  print("Division of ${x} by ${y} is ${x/y}");
+  print("Integer Division of ${x} by ${y} is ${x~/y}");
+  print("Remainder of ${x} and ${y} is ${x%y}");
+  
+  //conditional 
+  print(x>y); //x greater than y
+  print(x<y); //x lesser than y
+  print(x>=y);//x greater than or equal to y
+  print(x<=y);//x lesser than or equal to y
+  print(x==y);//x equals y
+  print(x!=y); //x not equals y
+  
+  //logical
+  
+  print((x>y)&&(x<y)); //and
+  print((x>y) || (x<y)); //or
+  print(!(x>y));//not
+  
+  
+}

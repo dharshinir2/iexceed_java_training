@@ -1,0 +1,32 @@
+void main() {
+
+
+  int x=10;
+  String str="welcome";
+  print(x);
+  print(x.runtimeType);
+  print(str.runtimeType);
+  var str1="hello";
+  print(str1);
+  print(str1.runtimeType);
+  var y=10;
+  print(y);
+  print(y.runtimeType);
+  dynamic z=10;
+  print(z);
+  print(z.runtimeType);
+  z="flutter";
+  print(z);
+  print(z.runtimeType);
+  z=10.9;
+  print(z);
+  print(z.runtimeType);
+  num a=9;
+  print(a);
+  print(a.runtimeType);
+  num b=2.2;
+  print(b);
+  print(b.runtimeType);
+  print(b.isFinite);
+  
+}
