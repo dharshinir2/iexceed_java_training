@@ -1,0 +1,13 @@
+void main() {
+  int x = 8;
+  print(x is int);
+  if (x is! int) {
+    print("${x} is not a integer");
+  } else {
+    print("${x} is a integer");
+  }
+  var ob = 'xyz';
+  print(ob.runtimeType);
+  String msg = ob as String;
+  print(msg.runtimeType);
+}
