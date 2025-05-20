@@ -112,13 +112,49 @@ class ParkingLot {
 
 public class Main {
     public static void main(String[] args) {
-        ParkingLot parkingLot = new ParkingLot(2, 5);
-        Vehicle v1 = new Vehicle("car", "TN74BC1244");
-        System.out.println("Ticket issued: " + parkingLot.park(v1));
-        parkingLot.displayAvailability();
-        Vehicle v2 = new Vehicle("bike", "KA74BC144");
-        System.out.println("Ticket issued: " + parkingLot.park(v2));
-        parkingLot.unpark("ABC123_1_2");
-        parkingLot.displayAvailability();
+         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter number of floors: ");
+        int floors = scanner.nextInt();
+
+        System.out.println("Enter number of slots per floor: ");
+        int slotsPerFloor = scanner.nextInt();
+
+        ParkingLot parkingLot = new ParkingLot(floors, slotsPerFloor);
+
+        while (true) {
+            System.out.println("\n1. Park Vehicle");
+            System.out.println("2. Unpark Vehicle");
+            System.out.println("3. Display Availability");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter vehicle type: ");
+                    String type = scanner.nextLine();
+                    System.out.print("Enter registration number: ");
+                    String regNo = scanner.nextLine();
+                    Vehicle vehicle = new Vehicle(type, regNo);
+                    String ticket = parkingLot.park(vehicle);
+                    System.out.println("Ticket issued: " + ticket);
+                    break;
+                case 2:
+                    System.out.print("Enter ticket number to unpark: ");
+                    String ticketNumber = scanner.nextLine();
+                    parkingLot.unpark(ticketNumber);
+                    break;
+                case 3:
+                    parkingLot.displayAvailability();
+                    break;
+                case 4:
+                    
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
     }
 }
