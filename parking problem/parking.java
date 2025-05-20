@@ -92,6 +92,12 @@ class ParkingLot {
     }
 
     public void unpark(String ticket) {
+        if(!(ticket.contains("ABC")))
+        {
+            System.out.print("Invalid Ticket");
+            
+        }
+        else{
         String[] parts = ticket.split("_");
         int floor = Integer.parseInt(parts[1]);
         int slotNumber = Integer.parseInt(parts[2]);
@@ -100,7 +106,7 @@ class ParkingLot {
                 slot.unpark();  
             }
         }  
-    }
+    }}
     public void displayAvailability() {
         int available = 0;
         for (ParkingSlot slot : slots) {
@@ -133,7 +139,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter vehicle type: ");
+                    System.out.print("Enter vehicle type : ");
                     String type = scanner.nextLine();
                     System.out.print("Enter registration number: ");
                     String regNo = scanner.nextLine();
