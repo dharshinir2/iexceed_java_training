@@ -1,0 +1,8 @@
+void main() {
+  const pi=3.14; //compiletime constant
+  int radius=18;
+  num area=pi*radius*radius;
+  print(area);
+  final dt=DateTime.now(); //runtime
+  print(dt);
+}
