@@ -58,7 +58,7 @@ class ParkingSlot extends Slot {
     }
 
     public void unpark() {
-        System.out.println("Vehicle unparked: " + (vehicle != null ? vehicle.getRegistrationNumber() : ""));
+        System.out.println("Vehicle unparked: " + vehicle.getRegistrationNumber() );
         this.vehicle = null;
         this.isAvailable = true;
     }
@@ -66,8 +66,6 @@ class ParkingSlot extends Slot {
 
 class ParkingLot {
     private List<ParkingSlot> slots = new ArrayList<>();
-    
-
     public ParkingLot(int floors, int slotsPerFloor) {
         for (int i = 0; i < floors; i++) {
             for (int j = 0; j < slotsPerFloor; j++) {
@@ -77,9 +75,9 @@ class ParkingLot {
         }
     }
 
-    private String getSlotType(int index) {
-        if (index == 0) return "truck";
-        if (index <= 2) return "bike";
+    private String getSlotType(int slotnumber) {
+        if (slotnumber == 0) return "truck";
+        else if (slotnumber <= 2) return "bike";
         return "car";
     }
 
@@ -99,13 +97,10 @@ class ParkingLot {
         int slotNumber = Integer.parseInt(parts[2]);
         for (ParkingSlot slot : slots) {
             if (slot.getFloor() == floor && slot.getSlotNumber() == slotNumber) {
-                slot.unpark();
-                
+                slot.unpark();  
             }
-        }
-        
+        }  
     }
-
     public void displayAvailability() {
         int available = 0;
         for (ParkingSlot slot : slots) {
@@ -118,14 +113,12 @@ class ParkingLot {
 public class Main {
     public static void main(String[] args) {
         ParkingLot parkingLot = new ParkingLot(2, 5);
-
-        Vehicle car = new Vehicle("car", "KA01AB1234");
-        String ticket = parkingLot.park(car);
-        System.out.println("Ticket issued: " + ticket);
-
+        Vehicle v1 = new Vehicle("car", "TN74BC1244");
+        System.out.println("Ticket issued: " + parkingLot.park(v1));
         parkingLot.displayAvailability();
-
-        parkingLot.unpark(ticket);
+        Vehicle v2 = new Vehicle("bike", "KA74BC144");
+        System.out.println("Ticket issued: " + parkingLot.park(v2));
+        parkingLot.unpark("ABC123_1_2");
         parkingLot.displayAvailability();
     }
 }
