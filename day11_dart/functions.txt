@@ -1,0 +1,37 @@
+ void main() 
+   {
+      void display(String str) //normal function
+        {
+              print(str);
+        }
+      
+      display("hello");
+      var displayf=display;//assigning a function to a variable
+   
+   
+      displayf("welcome");
+   
+   
+      void callfunction(Function one,String str)//passing a function as argument
+        {
+            one(str);
+        }
+   
+   
+    callfunction(display,"hi from call function");
+   
+   
+    Function returnfunction() //returning function
+     {
+        void innerfunction(int n,int m)
+         {
+            print(n+m);
+         }
+        return innerfunction;
+     }
+    var res=returnfunction(); //now res is the innerfunction
+    res(5,6);
+  
+
+}
+
