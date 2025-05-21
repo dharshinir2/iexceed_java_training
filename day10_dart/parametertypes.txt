@@ -1,0 +1,29 @@
+void main() {
+  display("Dharshini","Nagercoil");//positional
+  display2(name:"Dharshini",city:"nagercoil");//named
+  display3(name:"Dharshini"); //namedwithdefault
+  display4(name:"Dharshini",city:"madurai"); //required
+  display5("Dharshini"); //positionaloptional
+  display5("Dharshini","chennai");
+}
+void display(String name,String city)
+{
+  print("Hello $name from $city");
+}
+void display2({String? name,String? city})
+{
+  print("Hello $name from $city");
+}
+void display3({String? name,String? city="Banglore"})
+{
+  print("Hello $name from $city");
+}
+void display4({required String name,String? city})
+{
+  print("Hello $name from $city");
+}
+void display5(String name,[String city="coimbatore"])
+{
+  print("Hello $name from $city");
+}
+
