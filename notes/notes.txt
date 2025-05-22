@@ -1,0 +1,125 @@
+1.maximum value by integer in java?2power32 -1=2pow31
+2.maximum value accomodated by a 8bit?256(0-255)2power8
+wht is bit and byte?byte=8bit
+what is number system
+
+cmd prmpt
+check directory
+javac name.java
+java name
+
+bigInt - to store large values
+arg[]-hold value if we pass any value durig runtime(onlystring)
+this is a obj for non static elements(same adress as the objects)
+static variable's memory is same so it gets updated and value keeps changing
+static ethod is executed before constructor during class loading time(only one time)
+empt{}is also block aka instance block..it is before constructor after static
+this is used a s a obj inside the class.we can also call the other methods of the class like normally
+we can call paraeterized constructor by this keyword[this(1,1)]in normal constructor.but it should be prioritized that is given in first line
+static methods or variables cannot be accessed with objects and this keyword
+non static variable cannot be accesed or used inside a static function
+higher order func is a func which takes another function as a argument
+
+inheritance
+-----------------
+super keyword should be primary in the constructor(first)
+super(name,age)--> name and age is passed to the base class and the remaning is for child class.
+that means we can pass all the arguments to child and pass it to the parent
+if we just use super() the default constructor is called(of parent)
+this()same class constructor(can be parameterized)
+we can assign values to the base class variables from child class by using superkeyword
+eg super.name="Bee"
+we cant use this and super in same block(both has to be primary)
+base(child) object can be used to acces every elemets of parent class
+can even modify the values too.
+a obj of a class can used to every clss in their heirarchy.
+consider 3 clases a,b and c.B's obj can access b and a.whereas c can access all the classes
+
+overriding
+--------
+done with reference it is also known as dynamic method dispatch.it is run time
+normally with different object is compile time
+cannot overide final and static methods since static methods belong to the class
+
+
+
+Abstraction
+-----------
+abstract methods comes inside abstract class
+abstract clas shouldnt hav a object but can be extended and used by sub classes
+uses @overide to define the abstract methods
+eg @overide
+public void display(int x .int y)
+where display is a abstract method from a abstract class
+every method of abstract cls should be overridden
+can be overridden under the same @overideen annotation
+this isnt good for developers so we 
+
+
+upcasting
+----------
+calling the function of the superclass .its like type conversion in integers
+ 	b obj=new b();
+      a obj2=(a)obj; 
+      obj2.display(10,12);
+here we are casting a as object like b
+
+
+aggregation(composition) entity relationship
+------------------------------
+a object can be passed as a parameter to a class without extend or implement and the class methods can be assesed
+it helps in forming a structure like multiple inheritance(which isnt in java)
+this can be done for multiple classes too
+----------------------------------
+Day 3
+
+
+multiple inheritance is not in java insted we go with interface
+
+interface
+----------------
+interface acts like abstract class(only declarartion)
+we can late have another class for defining the interface's methods.
+implement can me use to join 2 or more classes or interface
+extend ca also used to join a singular interface
+variables inside interface are public ,static and final(can be accessed everywhere but cannot be update)
+
+functonal interface
+---------
+if a interface has only one abstract method then its functional interface
+represented by a annotation @functionalinterface
+
+--------------------------------
+DAY4
+
+
+nested class
+--------------
+class insed class.better encapsulation.
+nested class can also access the private elements of outerclass
+the innerclass is static it can access only the static elements of the outer class.
+
+
+DAY5
+
+Multithreading
+---------------------
+
+threads are independent block of code.handling multiple threads all at once is called multithreading.
+
+DAY6
+------------
+DATA STREAMS
+
+Binary Array output/input stream
+
+File Input/output stream
+
+Object output and input stream
+
+data output/input
+
+buffered input
+
+
+	  

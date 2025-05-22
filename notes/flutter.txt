@@ -1,0 +1,62 @@
+variable declaration
+
+1.int x=9;
+2.var x=9;(compilation time)x is int throughout the program
+3.dynamic x=9(runtime) x datatype an be changed
+4.num x=99;(num for numeric datatypes)
+
+variable name schould be in camelcase (but starts with small letter)
+num.runtimeType-> returns type
+
+
+
+
+day2
+--------
+
+complile time constant value-> const g=6.9;
+final->runtime
+types of parameters
+	positional
+	named
+	named with default
+	named with required
+	optional positional parameter
+	
+	
+	
+	
+	
+	
+day3
+--------------
+	
+functional programing
+uses to avoid shared mutable state
+
+
+why we use functional programing?
+to improve readability
+easy for testing and debugging(making unit test more simple)
+maintains concurrency(avoid race conditions )
+less complexity
+functions are self contained and predictable
+
+
+dart treats function as first class citizen
+reasons:
+we can assign a func to variable or pass it to another function
+and even we can return func from other functions
+
+
+
+
+
+Based on the number of arguments it receive,the function is called as
+
+0-> nullary function
+1->unary
+2->binary
+
+if returns boolean then its called predicate function
+

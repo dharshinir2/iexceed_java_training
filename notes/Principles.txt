@@ -1,0 +1,79 @@
+
+SOLID
+----------
+SOLID stands for Single Responsibility Principle, 
+Open/Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, 
+and Dependency Inversion Principle
+
+Single Responsibility Principle (SRP):
+A class should have only one reason to change, meaning it should have only one responsibility. This makes code more modular and easier to understand. 
+
+Open/Closed Principle (OCP):
+Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification. This means new functionality can be added without altering existing code. 
+
+Liskov Substitution Principle (LSP):
+Subtypes should be substitutable for their base types without altering the correctness of the program. This ensures that derived classes can be used interchangeably with their base classes without causing issues. 
+
+Interface Segregation Principle (ISP):
+Many client-specific interfaces are better than one general-purpose interface. This means that interfaces should be tailored to the specific needs of clients rather than trying to be overly comprehensive. 
+
+Dependency Inversion Principle (DIP):
+High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstracts should not depend on details, details should depend on abstractions. This principle promotes loose coupling and makes code more flexible. 
+
+
+
+YAGNI
+------------
+
+short for "You Ain't Gonna Need It,
+Focus on the Present:
+YAGNI encourages developers to prioritize the current requirements of a project over speculating about future needs. 
+Avoid Overengineering:
+By not implementing features that aren't immediately needed, YAGNI helps avoid overengineering and simplifies the codebase. 
+Reduced Maintenance:
+Simpler codebases are easier to maintain and debug, leading to fewer problems in the long run. 
+Faster Development:
+Focusing on the most critical features first allows developers to deliver value more quickly. 
+Improved Focus:
+By avoiding distractions from unnecessary features, developers can stay focused on the core requirements of the project. 
+Flexibility:
+A simpler codebase is often more flexible and adaptable to future changes. 
+
+KISS
+------------
+Keep It Simple, Stupid
+
+Simplicity over complexity:
+The KISS principle emphasizes avoiding unnecessary complexity in design and implementation. 
+Easier to understand and maintain:
+Simple designs are generally easier for developers to understand, maintain, and debug. 
+Reduced cognitive load:
+Simplicity minimizes the mental effort required to grasp and work with a system. 
+Focus on core functionality:
+KISS encourages focusing on the essential aspects of a system and avoiding unnecessary features or embellishments. 
+
+
+TDA
+--------------
+Tell, Don't Ask 
+
+Instructing objects:
+Instead of asking an object to reveal its internal state, you directly tell it to perform a specific action (e.g., "Update the user's profile", "Validate the data"). 
+Reducing dependencies:
+By encapsulating the logic within the object itself, you minimize the need for other classes to access and manipulate the object's internal data directly. 
+Encapsulation:
+TDA promotes strong encapsulation, meaning that the object's internal state is hidden from the outside world and can only be accessed or modified through its methods. 
+Maintainability:
+TDA can lead to more maintainable code because the object's behavior is defined within itself, making it easier to change or update without affecting other parts of the program. 
+
+DRY
+----------
+Don't Repeat Yourself,
+
+
+Core Idea:
+
+    Avoid Duplication: The principle advocates against duplicating code or logic within a system. 
+
+Single Source of Truth: Every piece of knowledge should be represented in only one place, making it easier to manage and update. 
+Abstraction: DRY often involves using abstraction to extract common functionality and create reusable components. 
