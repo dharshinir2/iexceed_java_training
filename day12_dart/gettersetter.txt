@@ -1,0 +1,41 @@
+
+class Student
+  {
+    String _name=""; //_ denotes that it is prt
+    int _age=0;
+  
+  
+    void setName(String name)
+    {
+      this._name=name;
+    }
+  
+    void setAge(int age)
+    {
+      this._age=age;
+    }
+  
+    String get getName=>_name; 
+  //arrow fn with get keyword so no need for ()
+    int get getAge=>_age;
+  
+  } 
+
+
+void main() 
+   {
+     
+    Student s=Student();
+    s.setName("Dharshini");
+    s.setAge(22);
+    print(s.getName);
+    print(s.getAge);
+    s._name="Dharshu";
+    print(s._name);
+    print(s._age);
+  
+   }
+
+    
+    
+
