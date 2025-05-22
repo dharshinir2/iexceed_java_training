@@ -1,0 +1,34 @@
+
+class student
+  {
+    int? id;
+    String? name;
+    String? department; //instance variables
+  
+    student()
+      //default constructor
+    {
+      id=1;
+      name="Zoro";
+      department="CSE";
+    }
+  
+    void display() //class method
+    {
+      name="Luffy";
+      print("Name = $name");
+      print("id = $id");
+      print("department = $department");
+    }
+  } 
+
+
+void main() 
+   {
+      student s=student();
+      s.display();
+   }
+
+    
+    
+
