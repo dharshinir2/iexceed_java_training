@@ -1,38 +1,35 @@
 
-class Log
-  {
-    
-      String name="";
-      int age=0;
-  
-      Log(String name,int age)
-      {
-        this.name=name;
-        this.age=age;
-      }
- 
-  
-  } 
+class Log {
+  String name = "";
+  int age = 0;
 
-  extension notification on Log
-  {
-    
-      void notify(String a)
-      {
-        print("hello ${name} you are ${age} years old.$a");
-      }
-    
+  Log(String name, int age) {
+    this.name = name;
+    this.age = age;
   }
+}
 
-void main() 
-   {
-   
-    Log obj=new Log("Dharshini",22);
-    obj.notify("thanks");
-    
-   
-   }
+extension notification
+    on
+        Log //withname
+        {
+  void notify(String a) {
+    print("hello ${name} you are ${age} years old.$a");
+  }
+}
 
-    
-    
+extension
+    on
+        Log //withoutname
+        {
+  void notify1(String a) {
+    print("hello ${name} you are ${age} years old.$a");
+  }
+}
+
+void main() {
+  Log obj = new Log("Dharshini", 22);
+  obj.notify("thanks");
+}
+
 
