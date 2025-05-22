@@ -1,0 +1,34 @@
+
+class Student
+  {
+    int _x=0;
+    int _y=0;
+    Student()
+    {
+      print("this a default constructor");
+    }
+  
+    Student.display(int a,int b) //parameterized constructor
+    {
+      this._x=a;
+      this._y=b;
+      
+      print(_x+_y);
+    }
+    
+  
+  } 
+
+
+void main() 
+   {
+     
+    Student();
+    Student.display(10,15);
+   
+  
+   }
+
+    
+    
+
