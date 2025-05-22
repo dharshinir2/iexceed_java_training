@@ -1,0 +1,38 @@
+
+class Log
+  {
+    
+      String name="";
+      int age=0;
+  
+      Log(String name,int age)
+      {
+        this.name=name;
+        this.age=age;
+      }
+ 
+  
+  } 
+
+  extension notification on Log
+  {
+    
+      void notify(String a)
+      {
+        print("hello ${name} you are ${age} years old.$a");
+      }
+    
+  }
+
+void main() 
+   {
+   
+    Log obj=new Log("Dharshini",22);
+    obj.notify("thanks");
+    
+   
+   }
+
+    
+    
+
