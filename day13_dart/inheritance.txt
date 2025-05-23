@@ -1,0 +1,47 @@
+class Person   // super class base class
+{
+    String? name;
+    int? age;
+    String? city;
+    // Person() // default constructor
+    // {
+    //   print("Default constructor is called-super");
+    // }
+ 
+    Person(String name,int age,String city) // parameterized constructor
+    {
+      this.name=name;
+      this.age=age;
+      this.city=city;
+    }
+ 
+    void displayPerson()
+    {
+      print("${name} ${age} ${city}");
+    }
+}
+ 
+class Employee extends Person  // derived class or child class
+{
+   String? desig;
+   Employee(String name,int age,String city,String desig):super(name,age,city)
+   {
+  
+    this.desig=desig;
+   }
+ 
+   void displayEmployee()
+   {
+    
+    print(desig);
+   }
+}
+ 
+void main()
+{
+  Employee obj=Employee("Arun",23,"Bengaluru","s.Engg");
+ 
+  obj.displayPerson();
+  obj.displayEmployee();
+ 
+}
