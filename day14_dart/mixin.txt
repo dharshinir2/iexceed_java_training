@@ -1,0 +1,27 @@
+abstract class Welcome{
+  void wel(String name);
+}
+
+mixin sendmsg on Welcome{
+  void wel(String name)
+  {
+    print("welcome $name");
+  }
+}
+
+class Reception extends Welcome with sendmsg{
+  String name="";
+  Reception(String name){
+    this.name=name;
+  }
+  void display()
+  {
+    wel(name);
+  }
+  
+}
+
+void main() {
+  Reception r=Reception("Dharshini");
+  r.display();
+}
