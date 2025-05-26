@@ -1,0 +1,33 @@
+abstract class Management {
+  String ispresent();
+}
+
+class Students extends Management {
+  String name;
+  Students(this.name);
+
+  @override
+  String ispresent() {
+    return "Student $name is present";
+  }
+}
+
+class Professor extends Management {
+  String name;
+  Professor(this.name);
+
+  @override
+  String ispresent() {
+    return "Professor $name is present";
+  }
+}
+
+void main() {
+  Professor p = Professor("Kim");
+  Students s = Students("John");
+
+  print(p.ispresent()); 
+  print(s.ispresent());
+}
+
+
