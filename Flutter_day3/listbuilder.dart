@@ -20,9 +20,16 @@ class myApp extends StatelessWidget {
           backgroundColor: Colors.yellow,
           shadowColor: Colors.yellow,
         ),
-        body: ListView.builder(itemCount: obj.length , itemBuilder: (BuildContext context,int index) {
+        body: ListView.separated(itemCount: obj.length , itemBuilder: (BuildContext context,int index) {
           return getbook(index);
-        })
+        },
+          separatorBuilder:(BuildContext context,int index)
+          {
+            return Divider(height: 15,thickness: 1,);
+          }
+
+          ,
+        )
       ),
     );
   }
@@ -32,7 +39,7 @@ class myApp extends StatelessWidget {
         radius: 30.0,),
       title: Text(obj[index].name),
       subtitle: Text(obj[index].author),
-      trailing: Icon(Icons.insert_emoticon_rounded),
+      trailing: Icon(Icons.heart_broken_outlined),
 
     );
     
@@ -40,4 +47,6 @@ class myApp extends StatelessWidget {
 }
 
   
+
+
 
