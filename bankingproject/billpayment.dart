@@ -23,6 +23,7 @@ class BillPaymentPage extends StatefulWidget {
 class _BillPaymentPageState extends State<BillPaymentPage> {
   final TextEditingController accountController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   String? selectedBiller;
   String? selectedSupplier;
@@ -40,7 +41,7 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
   };
 
   final List<String> electricitySuppliers = ['BESCOM', 'TNEB', 'MSEB', 'DHBVN', 'UPPCL'];
-  final List<String> waterSuppliers = ['BWSSB', 'Delhi Jal Board', 'Chennai Metro Water'];
+  final List<String> waterSuppliers = ['BWSSB', 'Banglore city Board', 'Karnataka Water Supply Board'];
   final List<String> gasSuppliers = ['Indane', 'Bharat Gas', 'HP Gas'];
   final List<String> broadbandOperators = ['ACT Fibernet', 'Airtel Xstream', 'Jio Fiber'];
   final List<String> simTypes = ['Prepaid', 'Postpaid'];
@@ -53,40 +54,31 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
 
   void fetchBill() {
     if (selectedBiller == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please select a biller')),
-      );
+      showSnackBar('Please select a biller');
       return;
     }
 
-    if (selectedBiller == 'Electricity' ||
-        selectedBiller == 'Water' ||
-        selectedBiller == 'Gas' ||
-        selectedBiller == 'Broadband') {
+    if (nameController.text.isEmpty) {
+      showSnackBar('Please enter your name');
+      return;
+    }
+
+    if (['Electricity', 'Water', 'Gas', 'Broadband'].contains(selectedBiller)) {
       if (selectedSupplier == null || accountController.text.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Please select supplier/operator and enter account number')),
-        );
+        showSnackBar('Please select supplier/operator and enter account number');
         return;
       }
     }
 
     if (selectedBiller == 'Recharge') {
-      if (phoneController.text.isEmpty ||
-          selectedSimType == null ||
-          selectedOperator == null ||
-          selectedPlan == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Please enter phone number, SIM type, operator, and plan')),
-        );
+      if (phoneController.text.isEmpty || selectedSimType == null || selectedOperator == null || selectedPlan == null) {
+        showSnackBar('Please enter phone number, SIM type, operator, and plan');
         return;
       }
     }
 
     if (selectedBiller == 'FASTag Recharge' && accountController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter vehicle number')),
-      );
+      showSnackBar('Please enter vehicle number');
       return;
     }
 
@@ -98,24 +90,28 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
         'Gas': 316.50,
         'Broadband': 499.00,
         'FASTag Recharge': 100.00,
-        'Recharge': double.tryParse(
-            selectedPlan?.split('₹').last.split(' ').first ?? '0') ??
-            0.0,
+        'Recharge': double.tryParse(selectedPlan?.split('₹').last.split(' ').first ?? '0') ?? 0.0,
       }[selectedBiller];
     });
+  }
+
+  void showSnackBar(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
   @override
   void dispose() {
     accountController.dispose();
     phoneController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bill Payment')),
+      appBar: AppBar(title: Text('Bill Payment'),backgroundColor: Color.fromARGB(255, 30, 60, 100),
+      foregroundColor: Colors.white,),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -136,6 +132,7 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                       billFetched = false;
                       accountController.clear();
                       phoneController.clear();
+                      nameController.clear();
                       selectedSimType = null;
                       selectedPlan = null;
                       selectedOperator = null;
@@ -148,17 +145,19 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                       color: isSelected ? Colors.indigo.shade100 : Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: isSelected ? Colors.indigo : Colors.transparent,
+                        color: isSelected ? Color.fromARGB(255, 30, 60, 100): Colors.transparent,
                         width: 2,
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(entry.value, size: 30, color: Colors.indigo),
-                        SizedBox(height: 8),
-                        Text(entry.key, textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
-                      ],
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(entry.value, size: 30, color: Color.fromARGB(255, 30, 60, 100)),
+                          SizedBox(height: 8),
+                          Text(entry.key, textAlign: TextAlign.center, style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -166,18 +165,12 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
             ),
             SizedBox(height: 24),
 
-            if (selectedBiller == 'Electricity') ...[
-              buildDropdown('Select Supplier', electricitySuppliers),
-            ],
-            if (selectedBiller == 'Water') ...[
-              buildDropdown('Select Water Supplier', waterSuppliers),
-            ],
-            if (selectedBiller == 'Gas') ...[
-              buildDropdown('Select Gas Supplier', gasSuppliers),
-            ],
-            if (selectedBiller == 'Broadband') ...[
-              buildDropdown('Select Broadband Operator', broadbandOperators),
-            ],
+            buildTextField('Name', nameController, TextInputType.name),
+
+            if (selectedBiller == 'Electricity') buildDropdown('Select Supplier', electricitySuppliers),
+            if (selectedBiller == 'Water') buildDropdown('Select Water Supplier', waterSuppliers),
+            if (selectedBiller == 'Gas') buildDropdown('Select Gas Supplier', gasSuppliers),
+            if (selectedBiller == 'Broadband') buildDropdown('Select Broadband Operator', broadbandOperators),
 
             if (selectedBiller == 'Recharge') ...[
               buildTextField('Phone Number', phoneController, TextInputType.phone),
@@ -186,12 +179,9 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
               buildDropdown('Select Plan', rechargePlans, isPlan: true),
             ],
 
-            if (selectedBiller != null &&
-                selectedBiller != 'Recharge') ...[
+            if (selectedBiller != null && selectedBiller != 'Recharge') ...[
               Text(
-                selectedBiller == 'FASTag Recharge'
-                    ? 'Vehicle Number'
-                    : 'Account / Consumer Number',
+                selectedBiller == 'FASTag Recharge' ? 'Vehicle Number' : 'Account / Consumer Number',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
@@ -222,6 +212,8 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                   subtitle: Text(
                     selectedBiller == 'Recharge'
                         ? 'Operator: $selectedOperator\nPlan: $selectedPlan'
+                        : selectedBiller == 'FASTag Recharge'
+                        ? 'Vehicle Number: ${accountController.text}'
                         : 'Due Date: $dueDate\nSupplier: $selectedSupplier',
                   ),
                 ),
@@ -233,9 +225,17 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                     MaterialPageRoute(
                       builder: (context) => TransferSuccessPage(
                         amount: dueAmount!.toStringAsFixed(2),
-                        beneficiary: selectedBiller == 'Recharge'
-                            ? phoneController.text
-                            : accountController.text,
+                        beneficiary: nameController.text,
+                        biller: selectedBiller!,
+                        supplier: selectedSupplier,
+                        accountNumber: (selectedBiller == 'FASTag Recharge' || selectedBiller != 'Recharge')
+                            ? accountController.text
+                            : null,
+                        phoneNumber: selectedBiller == 'Recharge' ? phoneController.text : null,
+                        simType: selectedSimType,
+                        operator: selectedOperator,
+                        plan: selectedPlan,
+                        dueDate: selectedBiller == 'Recharge' ? null : dueDate,
                       ),
                     ),
                   );
@@ -264,17 +264,18 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
             border: OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 16),
+        SizedBox(height: 20),
       ],
     );
   }
 
-  Widget buildDropdown(String label, List<String> items, {bool isSimType = false, bool isOperator = false, bool isPlan = false}) {
-    String? currentValue;
-    if (isSimType) currentValue = selectedSimType;
-    else if (isOperator) currentValue = selectedOperator;
-    else if (isPlan) currentValue = selectedPlan;
-    else currentValue = selectedSupplier;
+  Widget buildDropdown(String label, List<String> options,
+      {bool isSimType = false, bool isPlan = false, bool isOperator = false}) {
+    String? selectedValue;
+    if (isSimType) selectedValue = selectedSimType;
+    else if (isPlan) selectedValue = selectedPlan;
+    else if (isOperator) selectedValue = selectedOperator;
+    else selectedValue = selectedSupplier;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -282,20 +283,17 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
         Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
         SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          value: currentValue,
-          items: items.map((item) {
-            return DropdownMenuItem(value: item, child: Text(item));
-          }).toList(),
-          onChanged: (value) => setState(() {
-            if (isSimType) selectedSimType = value;
-            else if (isOperator) selectedOperator = value;
-            else if (isPlan) selectedPlan = value;
-            else selectedSupplier = value;
-          }),
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-          ),
+          value: selectedValue,
+          items: options.map((value) => DropdownMenuItem(child: Text(value), value: value)).toList(),
+          onChanged: (value) {
+            setState(() {
+              if (isSimType) selectedSimType = value;
+              else if (isPlan) selectedPlan = value;
+              else if (isOperator) selectedOperator = value;
+              else selectedSupplier = value;
+            });
+          },
+          decoration: InputDecoration(border: OutlineInputBorder()),
         ),
         SizedBox(height: 20),
       ],
