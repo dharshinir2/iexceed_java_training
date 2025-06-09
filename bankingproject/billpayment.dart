@@ -8,9 +8,10 @@ class BillPaymentApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'UPI Bill Payment',
-      theme: ThemeData(primarySwatch: Colors.indigo),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: BillPaymentPage(),
       debugShowCheckedModeBanner: false,
+
     );
   }
 }
@@ -113,6 +114,7 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
       appBar: AppBar(title: Text('Bill Payment'),backgroundColor: Color.fromARGB(255, 30, 60, 100),
       foregroundColor: Colors.white,),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,17 +191,38 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                 controller: accountController,
                 decoration: InputDecoration(
                   hintText: 'Enter number',
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 2),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 1),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100)),
+                  ),
                 ),
+
               ),
               SizedBox(height: 20),
             ],
 
             ElevatedButton(
               onPressed: fetchBill,
-              child: Text('Fetch Bill'),
-              style: ElevatedButton.styleFrom(minimumSize: Size(double.infinity, 45)),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 45),
+                backgroundColor: Colors.white, // Background color
+
+                foregroundColor: Color.fromARGB(255, 30, 60, 100), // For ripple effect
+              ),
+              child: Text(
+                'Fetch Bill',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 30, 60, 100),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
+
 
             if (billFetched && dueAmount != null) ...[
               SizedBox(height: 30),
@@ -207,7 +230,7 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
                 elevation: 3,
                 margin: EdgeInsets.only(bottom: 20),
                 child: ListTile(
-                  leading: Icon(Icons.receipt_long, color: Colors.indigo),
+                  leading: Icon(Icons.receipt_long, color: Color.fromARGB(255, 30, 60, 100)),
                   title: Text('Due Amount: ₹${dueAmount!.toStringAsFixed(2)}'),
                   subtitle: Text(
                     selectedBiller == 'Recharge'
@@ -261,8 +284,17 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
           keyboardType: type,
           decoration: InputDecoration(
             hintText: 'Enter $label',
-            border: OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 2),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 1),
+            ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100)),
+            ),
           ),
+
         ),
         SizedBox(height: 20),
       ],
@@ -293,7 +325,19 @@ class _BillPaymentPageState extends State<BillPaymentPage> {
               else selectedSupplier = value;
             });
           },
-          decoration: InputDecoration(border: OutlineInputBorder()),
+          decoration: InputDecoration(
+            hintText: 'Enter $label',
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 2),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100), width: 1),
+            ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 30, 60, 100)),
+            ),
+          ),
+
         ),
         SizedBox(height: 20),
       ],
